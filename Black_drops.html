@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Black drops</title>
+        </head>
+        <body>
+                <div>
+                        <h3>Black drops</h3>
+                </div>
+                <div>
+                        <p><a href="http://internetpatrullen.se/index.html">Index</a></p>
+                </div>
+        <script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+        <script>
+                var points = 0;
+
+                d3.select('body')
+                        .style('background-color', 'teal')
+                        .append('svg')
+                        .style('width', '1600')
+                        .style('height', '1200');
+
+                var svg = d3.select('svg');
+
+                var info = d3.select('body')
+                        .append('text')
+                        .style('color', 'white')
+                        .style('font-weight', 'bold')
+                        .text('Points: ' + points);
+
+                function aC(cx, cy, cr, c, cc) {
+                        svg.append('circle')
+                                .style('cx', cx)
+                                .style('cy', cy)
+                                .style('r', cr)
+                                .style('fill', c)
+                                .transition()
+                                .duration(4000)
+                                .style('fill', cc);
+                }
+
+                aC(Math.random() * 1200, Math.random() * 600, Math.random() * 350, 'teal', 'violet');
+                aC(Math.random() * 1200, Math.random() * 600, Math.random() * 350, 'teal', 'yellow');
+                aC(Math.random() * 1200, Math.random() * 600, Math.random() * 350, 'teal', 'pink');
+                aC(Math.random() * 1200, Math.random() * 600, Math.random() * 350, 'teal', 'green');
+                aC(Math.random() * 1200, Math.random() * 600, Math.random() * 350, 'teal', 'blue');
+
+                d3.selectAll('circle')
+                        .on('click', function (e) {
+                                aC(Math.random() * 1200, Math.random() * 600, Math.random() * 100, 'darkred', 'black');
+                                points++;
+                                info.text('Points: ' + points);
+                        });
+        </script>
+        
+
+</body></html>
